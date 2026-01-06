@@ -63,9 +63,12 @@ const ModernProjects = () => {
                                 <h3 className="text-xl font-bold mb-2 text-white">Latest Publication</h3>
                                 <p className="text-lg text-gray-300 italic">"{publications[0].title}"</p>
                                 <p className="text-sm text-primary mt-1">{publications[0].journal}</p>
-                                <ul className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 mt-2">
-                                    {publications[0].description.map((desc, idx) => (
-                                        <li key={idx} className="block">* {desc}</li>
+                                <ul className="text-gray-400 text-sm space-y-2 mt-4">
+                                    {publications[0].description && publications[0].description.map((desc, idx) => (
+                                        <li key={idx} className="flex items-start gap-2">
+                                            <span className="mt-1.5 w-1 h-1 rounded-full bg-secondary shrink-0" />
+                                            <span className="leading-relaxed">{desc}</span>
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
