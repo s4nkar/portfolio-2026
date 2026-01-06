@@ -42,7 +42,7 @@ const Contact = () => {
                     </div>
 
                     <div className="mt-16 pt-8 border-t border-white/10 text-gray-500 text-sm">
-                        <p>© 2026 {personal.name}. Built with Next.js, Tailwind & Vibe.</p>
+                        <p>© 2026 {personal.name}. All rights reserved.</p>
                     </div>
                 </div>
             </div>
