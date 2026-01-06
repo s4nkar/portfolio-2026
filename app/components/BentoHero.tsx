@@ -4,6 +4,7 @@ import React from 'react';
 import { BentoGrid, BentoItem } from './BentoGrid';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { Github, Linkedin, Mail, MapPin, ArrowRight, Code2, BrainCircuit, Globe, Terminal, FileJson, Sparkles } from 'lucide-react';
+import TextScramble from './TextScramble';
 
 const BentoHero = () => {
     const { personal, skills } = PORTFOLIO_DATA;
@@ -23,10 +24,10 @@ const BentoHero = () => {
                     </div>
 
                     <div className="mt-8">
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none mb-4">
-                            Sankar <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Dev S</span>
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none mb-4">
+                            <TextScramble text="Sankar" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Dev S</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl">
+                        <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl">
                             Full-stack Engineer & AI Researcher. <br />
                             Building the bridge between <span className="text-white">Conceptual AI</span> and <span className="text-white">Production Reality</span>.
                         </p>

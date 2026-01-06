@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   keywords: ["Sankar Dev S", "AI Researcher", "Full Stack Engineer", "NLP", "React", "Next.js", "Portfolio"],
 };
 
+import CustomCursor from "./components/CustomCursor";
+
+import ParticlesBackground from "./components/ParticlesBackground";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,6 +36,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground selection:bg-primary/30 selection:text-white`}
       >
+        <ParticlesBackground />
+        <CustomCursor />
         <FloatingDock />
         {children}
       </body>

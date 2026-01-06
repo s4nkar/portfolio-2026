@@ -18,7 +18,7 @@ const Experience = () => {
                 transition={{ duration: 0.5 }}
                 className="mb-16"
             >
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">The <span className="text-gradient">Journey</span></h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">The <span className="text-gradient">Journey</span></h2>
                 <p className="text-gray-400 max-w-2xl">Professional milestones and academic achievements.</p>
             </motion.div>
 

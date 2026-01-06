@@ -13,7 +13,7 @@ const ModernProjects = () => {
         <Section id="work" className="py-20">
             <div className="flex items-end justify-between mb-12 px-4 gap-8">
                 <div>
-                    <h2 className="text-4xl font-bold mb-2">Selected <span className="text-gradient">Work</span></h2>
+                    <h2 className="text-3xl font-bold mb-2">Selected <span className="text-gradient">Work</span></h2>
                     <p className="text-gray-400">Research papers and full-stack applications.</p>
                 </div>
                 <div className="flex items-center gap-4 mb-2 shrink-0">
