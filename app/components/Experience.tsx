@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PORTFOLIO_DATA } from '../data/portfolio';
-import { Briefcase, Calendar, MapPin, GraduationCap } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, GraduationCap, Award } from 'lucide-react';
 import Section from './Section';
 
 const Experience = () => {
@@ -82,7 +82,19 @@ const Experience = () => {
                         <div className="p-6 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
                             <div className="flex flex-col md:flex-row justify-between md:items-center gap-2">
                                 <div>
-                                    <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
+                                    <div className="flex items-center gap-3">
+                                        <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
+                                        {/* @ts-ignore */}
+                                        {edu.honors && (
+                                            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+                                                <Award size={12} className="text-amber-400" />
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">
+                                                    {/* @ts-ignore */}
+                                                    {edu.honors}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
                                     <p className="text-gray-400">{edu.institution}</p>
                                 </div>
                                 <span className="px-3 py-1 rounded-full bg-black/30 border border-white/10 text-xs text-gray-300">

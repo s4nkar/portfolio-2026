@@ -14,7 +14,8 @@ export const PORTFOLIO_DATA = {
         {
             degree: "Masters in Artificial Intelligence",
             institution: "University of East London, UK",
-            year: "2023 – 2025"
+            year: "2023 – 2025",
+            honors: "Distinction"
         },
         {
             degree: "Bachelor of Computer Application",
@@ -68,12 +69,14 @@ export const PORTFOLIO_DATA = {
         {
             name: "SoundSense – Multimodal Vocal Anomaly Detection",
             description: "Developed a cross-modal AI system to detect emotional inconsistencies between spoken text and vocal tone using Wav2Vec2.0 and RoBERTa.",
-            tech: ["Wav2Vec2.0", "RoBERTa", "Python"]
+            tech: ["Wav2Vec2.0", "RoBERTa", "Python"],
+            link: "https://github.com/s4nkar/SoundSense"
         },
         {
             name: "EmoTract – Advanced NLP Framework with Age Verification",
             description: "Engineered a real-time sentiment platform using BERT and RoBERTa to classify 28 distinct emotions. Architected the full stack using Django, React.js, and TypeScript.",
-            tech: ["BERT", "RoBERTa", "Django", "React.js", "TypeScript", "Docker"]
+            tech: ["BERT", "RoBERTa", "Django", "React.js", "TypeScript", "Docker"],
+            link: "https://github.com/s4nkar/MERN-NLP-Emotract"
         }
     ],
     publications: [

@@ -3,20 +3,25 @@
 import React from 'react';
 import { BentoGrid, BentoItem } from './BentoGrid';
 import { PORTFOLIO_DATA } from '../data/portfolio';
-import { ArrowUpRight, Folder, GitBranch } from 'lucide-react';
+import { ArrowUpRight, Folder, GitBranch, Github } from 'lucide-react';
 import Section from './Section';
 
 const ModernProjects = () => {
-    const { projects, publications } = PORTFOLIO_DATA;
+    const { projects, publications, personal } = PORTFOLIO_DATA;
 
     return (
         <Section id="work" className="py-20">
-            <div className="flex items-end justify-between mb-12 px-4">
+            <div className="flex items-end justify-between mb-12 px-4 gap-8">
                 <div>
                     <h2 className="text-4xl font-bold mb-2">Selected <span className="text-gradient">Work</span></h2>
                     <p className="text-gray-400">Research papers and full-stack applications.</p>
                 </div>
-                <div className="h-px bg-white/10 flex-grow ml-8 mb-4 hidden md:block"></div>
+                <div className="flex items-center gap-4 mb-2 shrink-0">
+                    <div className="h-px bg-white/10 w-16 md:w-32 hidden md:block"></div>
+                    <a href={personal.github} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
+                        <Github size={16} /> Explore full archive
+                    </a>
+                </div>
             </div>
 
             <BentoGrid className="!auto-rows-[minmax(300px,auto)]">
@@ -31,7 +36,7 @@ const ModernProjects = () => {
                             <div className="p-3 bg-white/10 rounded-xl backdrop-blur-md">
                                 <Folder className="text-secondary w-6 h-6" />
                             </div>
-                            <a href="#" className="p-2 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
+                            <a href={project.link} className="p-2 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
                                 <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-white" />
                             </a>
                         </div>
