@@ -20,7 +20,7 @@ const BentoHero = () => {
                         <div className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-mono text-secondary inline-block">
                             Available for hire
                         </div>
-                        <Sparkles className="text-secondary/50 animate-pulse" />
+                        <Code2 className="text-secondary/50 animate-pulse" />
                     </div>
 
                     <div className="mt-8">

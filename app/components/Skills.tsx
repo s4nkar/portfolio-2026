@@ -38,7 +38,7 @@ const Skills = () => {
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
                         className={`p-6 rounded-2xl glass-card hover:bg-white/5 transition-colors ${cat.border} border`}
                     >
-                        <h3 className={`text-xl font-bold mb-4 ${cat.color}`}>{cat.label}</h3>
+                        <h3 className={`text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary`}>{cat.label}</h3>
                         <div className="flex flex-wrap gap-2">
                             {/* @ts-ignore - Indexing using string key */}
                             {skills[cat.key].map((skill: string) => (

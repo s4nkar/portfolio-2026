@@ -8,8 +8,8 @@ import { Home, User, Code, Briefcase, Mail, Cpu } from 'lucide-react';
 const FloatingDock = () => {
     const links = [
         { name: 'Home', icon: Home, href: '#home' },
-        { name: 'About', icon: User, href: '#about-box' },
-        { name: 'Stack', icon: Cpu, href: '#stack' },
+        { name: 'Skills', icon: Code, href: '#skills' },
+        { name: 'Experience', icon: Cpu, href: '#experience' },
         { name: 'Work', icon: Briefcase, href: '#work' },
         { name: 'Contact', icon: Mail, href: '#contact' },
     ];
