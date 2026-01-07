@@ -3,7 +3,7 @@
 import React from 'react';
 import { BentoGrid, BentoItem } from './BentoGrid';
 import { PORTFOLIO_DATA } from '../data/portfolio';
-import { Github, Linkedin, Mail, MapPin, ArrowRight, Code2, BrainCircuit, Globe, Terminal, FileJson, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ArrowRight, Code2, BrainCircuit, Globe, Terminal, FileJson, Sparkles, FileText } from 'lucide-react';
 import TextScramble from './TextScramble';
 
 const BentoHero = () => {
@@ -33,12 +33,21 @@ const BentoHero = () => {
                         </p>
                     </div>
 
-                    <div className="flex gap-4 mt-8">
+                    <div className="flex gap-4 mt-8 flex-wrap">
                         <a href="#contact" className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:scale-105 transition-transform flex items-center gap-2">
                             Let's Talk <ArrowRight size={18} />
                         </a>
                         <a href="#work" className="px-6 py-3 bg-white/5 border border-white/10 text-white rounded-full hover:bg-white/10 transition-colors">
                             View Work
+                        </a>
+                        <a
+                            href="/data/Sankar_CV_2026.pdf"
+                            download="Sankar_CV_2026.pdf"
+                            className="px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-white/10 hover:text-white transition-colors flex items-center gap-2 group"
+                            title="Download Resume"
+                        >
+                            <FileText size={18} className="group-hover:text-primary transition-colors" />
+                            <span className="hidden sm:inline">Resume</span>
                         </a>
                     </div>
                 </BentoItem>
