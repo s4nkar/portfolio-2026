@@ -26,6 +26,8 @@ import CustomCursor from "./components/CustomCursor";
 
 import ParticlesBackground from "./components/ParticlesBackground";
 
+import DesktopAlert from "./components/DesktopAlert";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground selection:bg-primary/30 selection:text-white`}
       >
+        <DesktopAlert />
         <ParticlesBackground />
         <CustomCursor />
         <FloatingDock />

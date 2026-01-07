@@ -63,6 +63,18 @@ export const PORTFOLIO_DATA = {
                 "Engineered custom front-end components using React.js and modern CSS frameworks, ensuring 100% mobile-responsive designs.",
                 "Managed end-to-end project lifecycles, from initial requirement gathering to final AWS/VPS deployment, ensuring consistent on-time delivery."
             ]
+        },
+        {
+            role: "MERN Stack Internship",
+            company: "Camerinfolks",
+            location: "Ernakulam, Kerala, India",
+            duration: "September 2022 – January 2023",
+            achievements: [
+                "Acquired foundational knowledge of React JS and Node JS during an intensive internship, gaining proficiency in core concepts and principles.",
+                "Strengthened skills through hands-on experience, significantly impacting to the development of robust and scalable web applications.",
+                "Demonstrated adaptability and quick learning, enhancing the success of projects while continually expanding expertise in these technologies.",
+                "Implemented and championed best practices, optimizing development workflows for increased efficiency.",
+            ]
         }
     ],
     projects: [
