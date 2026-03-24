@@ -2,32 +2,32 @@
 export const PORTFOLIO_DATA = {
     personal: {
         name: "Sankar Dev S",
-        title: "Full-stack Engineer & AI Researcher",
+        title: "AI/ML Engineer & Full-Stack Developer",
         email: "s4nkar.connect@gmail.com",
         phone: "+44 7460054747",
-        location: "London, UK",
+        location: "Germany",
         linkedin: "https://linkedin.com/in/s4nkar",
         github: "https://github.com/s4nkar/",
-        objective: "Specializing in integrating LLMs and NLP frameworks into scalable web applications. Proven track record of moving research to production."
+        objective: "AI/ML Engineer with 3+ years building production ML systems. Published researcher with 95.08% F1-score NLP model (JDSIS 2026). Specialising in LLMs, NLP pipelines, and multimodal AI — open to relocation within Germany."
     },
     education: [
         {
-            degree: "Masters in Artificial Intelligence",
+            degree: "M.Sc. Artificial Intelligence (with Industrial Placement)",
             institution: "University of East London, UK",
             year: "2023 – 2025",
-            honors: "Distinction"
+            honors: "Distinction (70%) — approx. 1.0–1.3 on German grading scale"
         },
         {
-            degree: "Bachelor of Computer Application",
+            degree: "B.Sc. Computer Applications",
             institution: "Kerala University, India",
             year: "2019 – 2022"
         }
     ],
     skills: {
-        ai_ml: ["NLP (BERT, RoBERTa)", "Deep Learning (TensorFlow, CNN)", "Generative AI (Prompt Engineering, RAG, Langchain)", "Classical ML (Logistic Regression, Random Forest)", "PySpark", "LLM Data Pipelines", "Sentiment Analysis"],
-        web_dev: ["JavaScript/TypeScript (React.js, Node.js, Express.js, Next.js)", "Python (Django, Flask)", "PHP", "HTML5", "CSS3"],
-        cloud_devops: ["AWS (EC2)", "Docker", "CI/CD", "Git", "RESTful APIs", "Sockets.IO", "Postman", "SQL"],
-        professional: ["Project Management", "Technical Leadership", "Bespoke Software Architecture", "Technical Documentation", "Code Reviews", "Performance Optimization"]
+        ai_ml: ["PyTorch", "TensorFlow", "Hugging Face", "BERT", "RoBERTa", "Wav2Vec2.0", "LangChain", "RAG", "PySpark", "Multimodal AI", "Prompt Engineering", "Classical ML", "LLM Data Pipelines", "Sentiment Analysis", "Deep Learning (CNN)"],
+        mlops: ["FastAPI", "Docker", "AWS EC2", "CI/CD", "Git", "REST APIs", "WebSockets", "Socket.IO"],
+        web_dev: ["Python", "FastAPI", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "Django", "Flask", "PHP", "Laravel", "SQL", "MongoDB", "Redis"],
+        professional: ["ML Research", "Published Author", "Technical Leadership", "Production ML Deployment", "Code Reviews", "Performance Optimisation"]
     },
     experience: [
         {
@@ -36,10 +36,21 @@ export const PORTFOLIO_DATA = {
             location: "London, United Kingdom",
             duration: "September 2024 – Present",
             achievements: [
-                "Engineered a high-performance data pipeline to merge and preprocess 250,000+ text samples from multi-domain datasets.",
-                "Optimized training latency by 30% by implementing custom cleaning scripts and efficient tokenization strategies.",
-                "Developed the core classification architecture for JDSIS-published research, achieving a peak 95.08% F1-score in text-based emotion recognition using RoBERTa.",
-                "Pioneered a multimodal framework (SoundSense) using Wav2Vec2.0, outperforming traditional SVM/RF models by 30% in vocal anomaly detection accuracy."
+                "Built a data pipeline processing 250,000+ text samples from GoEmotions and Hate Speech corpora.",
+                "Fine-tuned RoBERTa for multi-class emotion recognition; achieved 95.08% F1-score, published in JDSIS (2026).",
+                "Reduced model training latency by 30% through batching optimisations across classical and transformer-based models.",
+                "Developed SoundSense, a multimodal vocal anomaly detection system using Wav2Vec2.0.",
+                "Achieved 78.10% accuracy on CREMA-D, outperforming SVM/RF baselines by 30%."
+            ]
+        },
+        {
+            role: "Software Engineer",
+            company: "Techise Solutions",
+            location: "Alappuzha, Kerala, India",
+            duration: "February 2023 – October 2023",
+            achievements: [
+                "Built backend systems using Laravel and MySQL for multiple concurrent client projects.",
+                "Delivered React.js frontends with full mobile responsiveness across all deliverables."
             ]
         },
         {
@@ -48,46 +59,34 @@ export const PORTFOLIO_DATA = {
             location: "Ernakulam, Kerala, India",
             duration: "May 2022 – May 2023",
             achievements: [
-                "Architected and delivered 200+ bespoke software solutions, maintaining a 95% client satisfaction rate.",
-                "Integrated predictive ML models into production environments to automate decision-making processes, reducing manual data processing time by approximately 20%.",
-                "Developed and deployed responsive Python (Django/Flask) and PHP web applications, focusing on scalable backend architecture and high-performance user interfaces."
-            ]
-        },
-        {
-            role: "Freelance Web Developer",
-            company: "Techise Solutions",
-            location: "Alappuzha, Kerala, India",
-            duration: "February 2023 – October 2023",
-            achievements: [
-                "Architected scalable backend systems using Laravel and MySQL, optimizing database schemas.",
-                "Engineered custom front-end components using React.js and modern CSS frameworks, ensuring 100% mobile-responsive designs.",
-                "Managed end-to-end project lifecycles, from initial requirement gathering to final AWS/VPS deployment, ensuring consistent on-time delivery."
-            ]
-        },
-        {
-            role: "MERN Stack Internship",
-            company: "Camerinfolks",
-            location: "Ernakulam, Kerala, India",
-            duration: "September 2022 – January 2023",
-            achievements: [
-                "Acquired foundational knowledge of React JS and Node JS during an intensive internship, gaining proficiency in core concepts and principles.",
-                "Strengthened skills through hands-on experience, significantly impacting to the development of robust and scalable web applications.",
-                "Demonstrated adaptability and quick learning, enhancing the success of projects while continually expanding expertise in these technologies.",
-                "Implemented and championed best practices, optimizing development workflows for increased efficiency.",
+                "Delivered 200+ bespoke software solutions across Python, PHP, and React; 95% client satisfaction.",
+                "Deployed predictive ML models into production, reducing manual data processing time by ~20%."
             ]
         }
     ],
     projects: [
         {
-            name: "SoundSense – Multimodal Vocal Anomaly Detection",
-            description: "Developed a cross-modal AI system to detect emotional inconsistencies between spoken text and vocal tone using Wav2Vec2.0 and RoBERTa.",
-            tech: ["Wav2Vec2.0", "RoBERTa", "Python"],
+            name: "VoxChain – Real-Time LLM Voice Agent",
+            description: "Real-time voice AI system with bidirectional streaming (speech ↔ LLM ↔ audio). Deployed end-to-end agentic LLM pipeline with low-latency audio I/O.",
+            tech: ["LangChain", "Qwen LLM", "FastAPI", "WebSockets"],
+            link: "https://github.com/s4nkar"
+        },
+        {
+            name: "SmartSafe – Multimodal Liveness Detection",
+            description: "Attendance system using facial recognition combined with audio liveness scoring for anti-spoofing. Generates a fraud-resistance confidence score from vision and audio signals.",
+            tech: ["Python", "OpenCV", "Face Recognition", "Audio Processing"],
+            link: "https://github.com/s4nkar"
+        },
+        {
+            name: "SoundSense – Multimodal Emotion Detection",
+            description: "Cross-modal system detecting emotional inconsistencies between speech text and vocal tone. Achieved 78.10% accuracy, outperforming SVM/RF baselines by 30%.",
+            tech: ["Wav2Vec2.0", "RoBERTa", "PyTorch", "CREMA-D"],
             link: "https://github.com/s4nkar/SoundSense"
         },
         {
-            name: "EmoTract – Advanced NLP Framework with Age Verification",
-            description: "Engineered a real-time sentiment platform using BERT and RoBERTa to classify 28 distinct emotions. Architected the full stack using Django, React.js, and TypeScript.",
-            tech: ["BERT", "RoBERTa", "Django", "React.js", "TypeScript", "Docker"],
+            name: "EmoTract – 28-Class Real-Time Emotion Classifier",
+            description: "Multi-label platform classifying 28 emotion categories from text input in real time. Full-stack deployment from fine-tuned transformer model to containerised web interface.",
+            tech: ["BERT", "RoBERTa", "Django", "React", "TypeScript", "Docker"],
             link: "https://github.com/s4nkar/MERN-NLP-Emotract"
         }
     ],
@@ -97,7 +96,7 @@ export const PORTFOLIO_DATA = {
             journal: "Journal of Data Science and Intelligent Systems (JDSIS), 2026",
             description: [
                 "Developed a sentiment analysis framework achieving a 95.08% F1-score using fine-tuned RoBERTa models.",
-                "Benchmarked BERT & RoBERTa against traditional models (LR, RF) to validate superior performance incomplex emotion classification."
+                "Benchmarked BERT & RoBERTa against traditional models (LR, RF) to validate superior performance in complex emotion classification."
             ]
         }
     ]

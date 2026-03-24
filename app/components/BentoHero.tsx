@@ -28,8 +28,8 @@ const BentoHero = () => {
                             <TextScramble text="Sankar" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Dev S</span>
                         </h1>
                         <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl">
-                            Full-stack Engineer & AI Researcher. <br />
-                            Building the bridge between <span className="text-white">Conceptual AI</span> and <span className="text-white">Production Reality</span>.
+                            AI/ML Engineer & Published Researcher. <br />
+                            Turning <span className="text-white">LLMs & NLP research</span> into <span className="text-white">Production AI systems</span>.
                         </p>
                     </div>
 
@@ -61,7 +61,7 @@ const BentoHero = () => {
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
                         <div className="flex items-center gap-2 text-white/80">
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                            <span className="text-sm font-mono">London, UK</span>
+                            <span className="text-sm font-mono">Germany</span>
                         </div>
                     </div>
                 </BentoItem>
