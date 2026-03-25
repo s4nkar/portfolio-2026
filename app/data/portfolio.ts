@@ -8,7 +8,8 @@ export const PORTFOLIO_DATA = {
         location: "Germany",
         linkedin: "https://linkedin.com/in/s4nkar",
         github: "https://github.com/s4nkar/",
-        objective: "AI/ML Engineer with 3+ years building production ML systems. Published researcher with 95.08% F1-score NLP model (JDSIS 2026). Specialising in LLMs, NLP pipelines, and multimodal AI — open to relocation within Germany."
+        objective: "AI/ML Engineer with 3+ years building production ML systems. Published researcher with 95.08% F1-score NLP model (JDSIS 2026). Specialising in LLMs, NLP pipelines, and multimodal AI — targeting AI roles and industrial PhD opportunities in Germany.",
+        researchInterests: ["Multimodal AI", "LLM Alignment", "NLP"],
     },
     education: [
         {

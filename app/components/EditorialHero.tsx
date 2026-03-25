@@ -81,7 +81,7 @@ const EditorialHero = () => {
                         <span className="flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-mono tracking-widest uppercase"
                             style={{ borderColor: 'rgba(255,45,120,0.3)', background: 'rgba(255,45,120,0.06)', color: '#FF2D78' }}>
                             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                            Available · Open to Germany
+                            Available · Industrial PhD & AI Roles · Germany
                         </span>
                     </motion.div>
 
@@ -296,9 +296,30 @@ const EditorialHero = () => {
                                 </div>
                             </div>
 
+                            {/* Research interests */}
+                            <div
+                                className="rounded-2xl p-4"
+                                style={{ background: 'rgba(192,132,252,0.07)', border: '1px solid rgba(192,132,252,0.2)' }}
+                            >
+                                <p className="text-[10px] font-mono uppercase tracking-widest mb-2.5" style={{ color: '#C084FC' }}>
+                                    🎓 Research Interests · Industrial PhD
+                                </p>
+                                <div className="flex flex-wrap gap-1.5">
+                                    {(personal.researchInterests as string[]).map((r: string) => (
+                                        <span
+                                            key={r}
+                                            className="px-2.5 py-1 text-xs rounded-lg font-mono"
+                                            style={{ background: 'rgba(192,132,252,0.12)', border: '1px solid rgba(192,132,252,0.25)', color: '#d8b4fe' }}
+                                        >
+                                            {r}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
                             {/* Bottom: tech pills */}
-                            <div className="flex flex-wrap gap-2">
-                                {["PyTorch", "LangChain", "Wav2Vec2", "FastAPI"].map(t => (
+                            <div className="flex flex-wrap gap-2 mt-2">
+                                {["GEN AI", "LangChain", "MLOps", "FastAPI"].map(t => (
                                     <span
                                         key={t}
                                         className="px-3 py-1 text-xs rounded-full font-mono"
