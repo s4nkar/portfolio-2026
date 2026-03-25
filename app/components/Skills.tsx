@@ -5,66 +5,121 @@ import { PORTFOLIO_DATA } from '../data/portfolio';
 import Section from './Section';
 
 const SKILL_ICONS: Record<string, string> = {
-    // AI/ML
     'PyTorch': '🔥', 'TensorFlow': '🧠', 'Hugging Face': '🤗', 'BERT': '📖',
     'RoBERTa': '🔬', 'Wav2Vec2.0': '🎙️', 'LangChain': '⛓️', 'RAG': '📡',
     'PySpark': '⚡', 'Multimodal AI': '🎯', 'Prompt Engineering': '✍️',
     'Classical ML': '📊', 'LLM Data Pipelines': '🔀', 'Sentiment Analysis': '💬',
     'Deep Learning (CNN)': '🖼️',
-    // MLOps
     'FastAPI': '🚀', 'Docker': '🐳', 'AWS EC2': '☁️', 'CI/CD': '♾️',
-    'Git': '🗂️', 'REST APIs': '🔌', 'WebSockets': '🔄', 'Socket.IO': '💬',
-    // Web
+    'Git': '🗂️', 'REST APIs': '🔌', 'WebSockets': '🔄', 'Socket.IO': '🔵',
     'Python': '🐍', 'TypeScript': '💙', 'JavaScript': '🌐', 'React': '⚛️',
     'Next.js': '▲', 'Node.js': '🟢', 'Django': '🎸', 'Flask': '🧪',
     'PHP': '🐘', 'Laravel': '🔴', 'SQL': '🗄️', 'MongoDB': '🍃', 'Redis': '🟥',
+    'ML Research': '🔭', 'Published Author': '📝', 'Technical Leadership': '🎯',
+    'Production ML Deployment': '🏭', 'Code Reviews': '🔍', 'Performance Optimisation': '🏎️',
 };
 
-const CATEGORY_META = [
+const CATEGORIES = [
     {
         key: 'ai_ml',
         label: 'AI & Machine Learning',
         accent: '#FF2D78',
-        bg: 'rgba(255,45,120,0.06)',
-        border: 'rgba(255,45,120,0.2)',
-        desc: 'Core ML stack for research & production',
+        direction: 1,
     },
     {
         key: 'mlops',
         label: 'MLOps & Deployment',
         accent: '#C084FC',
-        bg: 'rgba(192,132,252,0.06)',
-        border: 'rgba(192,132,252,0.2)',
-        desc: 'From model to scalable API',
+        direction: -1,
     },
     {
         key: 'web_dev',
         label: 'Web & Backend',
         accent: '#FF6BA8',
-        bg: 'rgba(255,107,168,0.06)',
-        border: 'rgba(255,107,168,0.2)',
-        desc: 'Full-stack engineering',
+        direction: 1,
     },
     {
         key: 'professional',
         label: 'Professional',
         accent: '#34d399',
-        bg: 'rgba(52,211,153,0.06)',
-        border: 'rgba(52,211,153,0.2)',
-        desc: 'Research & leadership skills',
+        direction: -1,
     },
 ];
+
+// A single infinite marquee strip
+const MarqueeStrip = ({
+    items,
+    accent,
+    direction,
+    speed = 35,
+}: {
+    items: string[];
+    accent: string;
+    direction: 1 | -1;
+    speed?: number;
+}) => {
+    // Duplicate items to create seamless loop
+    const doubled = [...items, ...items, ...items];
+    const totalWidth = items.length * 200; // rough px estimate per item
+
+    return (
+        <div className="relative overflow-hidden w-full py-1.5" style={{ maskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)' }}>
+            <motion.div
+                className="flex gap-3 w-max"
+                animate={{ x: direction === 1 ? [-totalWidth, 0] : [0, -totalWidth] }}
+                transition={{
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: speed,
+                    ease: 'linear',
+                }}
+                style={{ willChange: 'transform' }}
+            >
+                {doubled.map((skill, i) => (
+                    <div
+                        key={`${skill}-${i}`}
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-default select-none transition-all duration-300 hover:scale-105 group/badge"
+                        style={{
+                            background: `rgba(0,0,0,0.45)`,
+                            border: `1px solid ${accent}25`,
+                            color: '#c4c4c4',
+                            backdropFilter: 'blur(8px)',
+                        }}
+                        onMouseEnter={e => {
+                            const el = e.currentTarget;
+                            el.style.borderColor = `${accent}70`;
+                            el.style.color = '#fff';
+                            el.style.boxShadow = `0 0 18px ${accent}30`;
+                            el.style.background = `${accent}12`;
+                        }}
+                        onMouseLeave={e => {
+                            const el = e.currentTarget;
+                            el.style.borderColor = `${accent}25`;
+                            el.style.color = '#c4c4c4';
+                            el.style.boxShadow = '';
+                            el.style.background = `rgba(0,0,0,0.45)`;
+                        }}
+                    >
+                        <span className="text-base leading-none">{SKILL_ICONS[skill] ?? '•'}</span>
+                        <span>{skill}</span>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
 
 const Skills = () => {
     const { skills } = PORTFOLIO_DATA;
 
     return (
-        <Section id="skills" className="py-20">
+        <Section id="skills" className="py-20 overflow-hidden">
+            {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-14"
+                className="mb-14 px-4 md:px-8"
             >
                 <p className="text-xs font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2 mb-4">
                     <span className="w-6 h-px bg-primary/60" />
@@ -72,85 +127,49 @@ const Skills = () => {
                 </p>
                 <h2 className="text-4xl md:text-5xl font-bold">
                     Built for{' '}
-                    <span
-                        style={{
-                            WebkitTextStroke: '1.5px #FF2D78',
-                            color: 'transparent',
-                        }}
-                    >
+                    <span style={{ WebkitTextStroke: '1.5px #FF2D78', color: 'transparent' }}>
                         AI
                     </span>
                     {' '}at Scale
                 </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {CATEGORY_META.map((cat, catIdx) => {
+            {/* Marquee rows */}
+            <div className="flex flex-col gap-6">
+                {CATEGORIES.map((cat, catIdx) => {
                     const items = (skills as any)[cat.key] as string[];
                     return (
                         <motion.div
                             key={cat.key}
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: cat.direction === 1 ? -30 : 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                            className="relative rounded-2xl p-6 group overflow-hidden"
-                            style={{
-                                background: cat.bg,
-                                border: `1px solid ${cat.border}`,
-                            }}
+                            transition={{ duration: 0.6, delay: catIdx * 0.1 }}
+                            className="flex flex-col gap-2"
                         >
-                            {/* Top accent line */}
-                            <div
-                                className="absolute top-0 left-8 right-8 h-px"
-                                style={{ background: `linear-gradient(90deg, transparent, ${cat.accent}90, transparent)` }}
-                            />
-
-                            {/* Corner glow */}
-                            <div
-                                className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                style={{ background: `radial-gradient(circle, ${cat.accent}18, transparent 70%)` }}
-                            />
-
-                            <div className="flex items-start justify-between mb-5">
-                                <div>
-                                    <h3
-                                        className="text-base font-bold mb-1"
-                                        style={{ color: cat.accent }}
-                                    >
-                                        {cat.label}
-                                    </h3>
-                                    <p className="text-xs text-gray-500 font-mono">{cat.desc}</p>
-                                </div>
+                            {/* Category label */}
+                            <div className="flex items-center gap-3 px-4 md:px-8">
                                 <span
-                                    className="text-xs font-mono px-2 py-0.5 rounded-full"
-                                    style={{ background: `${cat.accent}18`, color: cat.accent, border: `1px solid ${cat.accent}30` }}
+                                    className="w-1.5 h-1.5 rounded-full"
+                                    style={{ background: cat.accent, boxShadow: `0 0 8px ${cat.accent}` }}
+                                />
+                                <span
+                                    className="text-xs font-mono uppercase tracking-widest"
+                                    style={{ color: cat.accent }}
                                 >
-                                    {items.length} skills
+                                    {cat.label}
                                 </span>
+                                <span className="flex-1 h-px" style={{ background: `linear-gradient(90deg, ${cat.accent}30, transparent)` }} />
+                                <span className="text-xs font-mono text-gray-600">{items.length} skills</span>
                             </div>
 
-                            <div className="flex flex-wrap gap-2">
-                                {items.map((skill, i) => (
-                                    <motion.span
-                                        key={skill}
-                                        initial={{ opacity: 0, scale: 0.85 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: catIdx * 0.05 + i * 0.03 }}
-                                        whileHover={{ scale: 1.08, y: -2 }}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm cursor-default transition-all"
-                                        style={{
-                                            background: 'rgba(0,0,0,0.3)',
-                                            border: `1px solid ${cat.accent}20`,
-                                            color: '#d1d5db',
-                                        }}
-                                    >
-                                        <span>{SKILL_ICONS[skill] ?? '•'}</span>
-                                        <span>{skill}</span>
-                                    </motion.span>
-                                ))}
-                            </div>
+                            {/* Scrolling strip */}
+                            <MarqueeStrip
+                                items={items}
+                                accent={cat.accent}
+                                direction={cat.direction as 1 | -1}
+                                speed={items.length * 3.2}
+                            />
                         </motion.div>
                     );
                 })}
