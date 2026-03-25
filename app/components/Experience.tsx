@@ -77,30 +77,31 @@ const Experience = () => {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="pl-8 md:pl-12 relative group"
                     >
-                        <div className="absolute -left-[5px] md:-left-[7px] top-2 w-3 h-3 md:w-3 md:h-3 bg-secondary rounded-full ring-4 ring-black" />
+                        <div className="absolute -left-[5px] md:-left-[7px] top-2 w-3 h-3 bg-secondary rounded-full ring-4 ring-black" />
 
                         <div className="p-6 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
-                            <div className="flex flex-col md:flex-row justify-between md:items-center gap-2">
-                                <div>
-                                    <div className="flex items-center gap-3">
-                                        <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
-                                        {/* @ts-ignore */}
-                                        {edu.honors && (
-                                            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)]">
-                                                <Award size={12} className="text-amber-400" />
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">
-                                                    {/* @ts-ignore */}
-                                                    {edu.honors}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <p className="text-gray-400">{edu.institution}</p>
-                                </div>
-                                <span className="px-3 py-1 rounded-full bg-black/30 border border-white/10 text-xs text-gray-300">
+                            {/* Top row: degree + year */}
+                            <div className="flex justify-between items-start gap-4">
+                                <h4 className="text-lg font-bold text-white leading-snug">{edu.degree}</h4>
+                                <span className="flex-shrink-0 px-3 py-1 rounded-full bg-black/30 border border-white/10 text-xs text-gray-300 whitespace-nowrap">
                                     {edu.year}
                                 </span>
                             </div>
+
+                            {/* Institution */}
+                            <p className="text-gray-400 mt-1">{edu.institution}</p>
+
+                            {/* Honors badge on its own line */}
+                            {/* @ts-ignore */}
+                            {edu.honors && (
+                                <div className="mt-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)] w-fit">
+                                    <Award size={12} className="text-amber-400 flex-shrink-0" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">
+                                        {/* @ts-ignore */}
+                                        {edu.honors}
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 ))}
