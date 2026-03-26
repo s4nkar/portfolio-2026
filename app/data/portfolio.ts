@@ -70,13 +70,13 @@ export const PORTFOLIO_DATA = {
             name: "VoxChain – Real-Time LLM Voice Agent",
             description: "Real-time voice AI system with bidirectional streaming (speech ↔ LLM ↔ audio). Deployed end-to-end agentic LLM pipeline with low-latency audio I/O.",
             tech: ["LangChain", "Qwen LLM", "FastAPI", "WebSockets"],
-            link: "https://github.com/s4nkar"
+            link: "https://github.com/s4nkar/VoxChain"
         },
         {
             name: "SmartSafe – Multimodal Liveness Detection",
             description: "Attendance system using facial recognition combined with audio liveness scoring for anti-spoofing. Generates a fraud-resistance confidence score from vision and audio signals.",
             tech: ["Python", "OpenCV", "Face Recognition", "Audio Processing"],
-            link: "https://github.com/s4nkar"
+            link: "https://github.com/s4nkar/SmartSafe"
         },
         {
             name: "SoundSense – Multimodal Emotion Detection",
