@@ -165,7 +165,10 @@ const ModernProjects = () => {
                             </div>
                         </div>
                     </div>
-                    <button
+                    <a
+                        href={publications[0].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex-shrink-0 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:scale-105"
                         style={{
                             background: 'linear-gradient(135deg, #FF2D78, #C084FC)',
@@ -174,7 +177,7 @@ const ModernProjects = () => {
                         }}
                     >
                         Read Paper
-                    </button>
+                    </a>
                 </div>
             </motion.div>
         </Section>

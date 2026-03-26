@@ -95,6 +95,7 @@ export const PORTFOLIO_DATA = {
         {
             title: "NLP-Framework for Youngsters with Advanced Transformer-Based Models",
             journal: "Journal of Data Science and Intelligent Systems (JDSIS), 2026",
+            link: "https://doi.org/10.47852/bonviewJDSIS62025752",
             description: [
                 "Developed a sentiment analysis framework achieving a 95.08% F1-score using fine-tuned RoBERTa models.",
                 "Benchmarked BERT & RoBERTa against traditional models (LR, RF) to validate superior performance in complex emotion classification."
