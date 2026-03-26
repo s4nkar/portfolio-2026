@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { Outfit, Kanit, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import FloatingDock from "./components/FloatingDock";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         <CustomCursor />
         <FloatingDock />
         {children}
+        <Analytics />
       </body>
     </html>
   );
