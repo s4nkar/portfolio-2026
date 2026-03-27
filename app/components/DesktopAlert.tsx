@@ -8,25 +8,36 @@ const DesktopAlert = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        // Check if device is likely mobile/tablet based on width
         const checkDevice = () => {
             if (window.innerWidth < 1024) {
-                // Check if user has already dismissed it in this session
-                const hasDismissed = sessionStorage.getItem('desktop-alert-dismissed');
-                if (!hasDismissed) {
-                    setIsVisible(true);
+                // Use localStorage with a 24-hour expiry so the alert isn't
+                // permanently silenced by a single dismiss click.
+                try {
+                    const raw = localStorage.getItem('desktop-alert-dismissed-at');
+                    if (raw) {
+                        const dismissedAt = parseInt(raw, 10);
+                        const hoursElapsed = (Date.now() - dismissedAt) / (1000 * 60 * 60);
+                        if (hoursElapsed < 24) return; // still within the 24-hr window
+                    }
+                } catch {
+                    // localStorage unavailable (private mode etc.) — just show it
                 }
+                setIsVisible(true);
             }
         };
 
         checkDevice();
-        window.addEventListener('resize', checkDevice);
+        window.addEventListener('resize', checkDevice, { passive: true });
         return () => window.removeEventListener('resize', checkDevice);
     }, []);
 
     const dismiss = () => {
         setIsVisible(false);
-        sessionStorage.setItem('desktop-alert-dismissed', 'true');
+        try {
+            localStorage.setItem('desktop-alert-dismissed-at', String(Date.now()));
+        } catch {
+            // localStorage unavailable — dismiss in-memory only
+        }
     };
 
     return (
