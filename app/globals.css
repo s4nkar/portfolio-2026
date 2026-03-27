@@ -133,3 +133,21 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.4);
 }
+
+/* ── Scroll indicator animation (was inline <style> in EditorialHero.tsx) ── */
+@keyframes scrollDrop {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+/* ── Skills marquee CSS animations (replaces Framer Motion JS loop) ── */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--marquee-width, 2000px))); }
+}
+
+@keyframes marqueeRight {
+  from { transform: translateX(calc(-1 * var(--marquee-width, 2000px))); }
+  to   { transform: translateX(0); }
+}

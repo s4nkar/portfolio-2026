@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import EditorialHero from "../components/EditorialHero";
 import AIStatsBar from "../components/AIStatsBar";
-import Skills from "../components/Skills";
-import Experience from "../components/Experience";
-import ModernProjects from "../components/ModernProjects";
-import Contact from "../components/Contact";
+
+const Skills = dynamic(() => import("../components/Skills"));
+const Experience = dynamic(() => import("../components/Experience"));
+const ModernProjects = dynamic(() => import("../components/ModernProjects"));
+const Contact = dynamic(() => import("../components/Contact"));
 
 export default function Home() {
   return (

@@ -46,7 +46,6 @@ const CATEGORIES = [
     },
 ];
 
-// A single infinite marquee strip
 const MarqueeStrip = ({
     items,
     accent,
@@ -58,53 +57,56 @@ const MarqueeStrip = ({
     direction: 1 | -1;
     speed?: number;
 }) => {
-    // Duplicate items to create seamless loop
-    const doubled = [...items, ...items, ...items];
-    const totalWidth = items.length * 200; // rough px estimate per item
+    // Doubled items for seamless CSS loop (was tripled = 180 nodes, now 120)
+    const doubled = [...items, ...items];
+    const duration = `${speed}s`;
+    const animName = direction === 1 ? 'marqueeLeft' : 'marqueeRight';
+    const totalItems = items.length;
 
     return (
-        <div className="relative overflow-hidden w-full py-1.5" style={{ maskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)' }}>
-            <motion.div
+        <div
+            className="relative overflow-hidden w-full py-1.5"
+            style={{ maskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)' }}
+        >
+            {/* Pure CSS animation — zero JS on animation thread, GPU-composited */}
+            <div
                 className="flex gap-3 w-max"
-                animate={{ x: direction === 1 ? [-totalWidth, 0] : [0, -totalWidth] }}
-                transition={{
-                    repeat: Infinity,
-                    repeatType: 'loop',
-                    duration: speed,
-                    ease: 'linear',
+                style={{
+                    animation: `${animName} ${duration} linear infinite`,
+                    // Each item ~200px wide; totalItems items per cycle
+                    ['--marquee-width' as string]: `${totalItems * 200}px`,
                 }}
-                style={{ willChange: 'transform' }}
             >
                 {doubled.map((skill, i) => (
                     <div
                         key={`${skill}-${i}`}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-default select-none transition-all duration-300 hover:scale-105 group/badge"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-default select-none skill-badge"
                         style={{
-                            background: `rgba(0,0,0,0.45)`,
+                            background: `rgba(10,10,12,0.7)`,
                             border: `1px solid ${accent}25`,
                             color: '#c4c4c4',
-                            backdropFilter: 'blur(8px)',
+                            // No backdropFilter — it was ~180 GPU blur layers, now 0
                         }}
                         onMouseEnter={e => {
-                            const el = e.currentTarget;
+                            const el = e.currentTarget as HTMLDivElement;
                             el.style.borderColor = `${accent}70`;
                             el.style.color = '#fff';
                             el.style.boxShadow = `0 0 18px ${accent}30`;
                             el.style.background = `${accent}12`;
                         }}
                         onMouseLeave={e => {
-                            const el = e.currentTarget;
+                            const el = e.currentTarget as HTMLDivElement;
                             el.style.borderColor = `${accent}25`;
                             el.style.color = '#c4c4c4';
                             el.style.boxShadow = '';
-                            el.style.background = `rgba(0,0,0,0.45)`;
+                            el.style.background = `rgba(10,10,12,0.7)`;
                         }}
                     >
                         <span className="text-base leading-none">{SKILL_ICONS[skill] ?? '•'}</span>
                         <span>{skill}</span>
                     </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     );
 };

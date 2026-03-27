@@ -17,7 +17,11 @@ const EditorialHero = () => {
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayText, setDisplayText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const tickRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    // Defer entrance animations until after hydration to avoid competing with JS parsing
+    useEffect(() => { setIsMounted(true); }, []);
 
     // Typewriter effect
     useEffect(() => {
@@ -74,7 +78,7 @@ const EditorialHero = () => {
                     {/* Availability badge */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        animate={isMounted ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                         transition={{ duration: 0.5 }}
                         className="flex items-center gap-3 w-fit"
                     >
@@ -88,7 +92,7 @@ const EditorialHero = () => {
                     {/* Big name */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ duration: 0.7, delay: 0.1 }}
                     >
                         <h1 className="font-bold leading-[0.9] tracking-tight">
@@ -115,7 +119,7 @@ const EditorialHero = () => {
                     {/* Animated role typewriter */}
                     <motion.div
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ delay: 0.4 }}
                         className="flex items-center gap-3 h-10"
                     >
@@ -132,7 +136,7 @@ const EditorialHero = () => {
                     {/* Objective */}
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ delay: 0.5 }}
                         className="text-gray-400 max-w-md text-base md:text-lg leading-relaxed"
                     >
@@ -142,7 +146,7 @@ const EditorialHero = () => {
                     {/* CTAs */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ delay: 0.65 }}
                         className="flex flex-wrap gap-3 items-center"
                     >
@@ -179,7 +183,7 @@ const EditorialHero = () => {
                     {/* Social row */}
                     <motion.div
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ delay: 0.8 }}
                         className="flex items-center gap-4 pt-2"
                     >
@@ -233,13 +237,12 @@ const EditorialHero = () => {
                             minHeight: '480px',
                         }}
                     >
-                        {/* Background image */}
+                        {/* Background gradient (was external Unsplash image — removed to eliminate blocking 3rd-party fetch) */}
                         <div
-                            className="absolute inset-0 bg-cover bg-center"
+                            className="absolute inset-0"
                             style={{
-                                backgroundImage: "url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1200&auto=format&fit=crop')",
-                                opacity: 0.25,
-                                mixBlendMode: 'luminosity',
+                                background: 'radial-gradient(ellipse at 60% 30%, rgba(255,45,120,0.18) 0%, rgba(192,132,252,0.1) 40%, transparent 70%)',
+                                opacity: 0.9,
                             }}
                         />
 
@@ -337,7 +340,7 @@ const EditorialHero = () => {
             {/* ── Scroll indicator ── */}
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 1.2 }}
                 className="relative z-10 flex flex-col items-center gap-2 pb-8"
             >
@@ -352,13 +355,7 @@ const EditorialHero = () => {
                         }}
                     />
                 </div>
-                <style>{`
-                    @keyframes scrollDrop {
-                        0% { transform: translateY(-100%); opacity: 0 }
-                        40% { opacity: 1 }
-                        100% { transform: translateY(200%); opacity: 0 }
-                    }
-                `}</style>
+                {/* keyframes moved to globals.css */}
             </motion.div>
         </section>
     );
