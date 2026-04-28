@@ -7,42 +7,51 @@ import Section from './Section';
 const SKILL_ICONS: Record<string, string> = {
     'PyTorch': '🔥', 'TensorFlow': '🧠', 'Hugging Face': '🤗', 'BERT': '📖',
     'RoBERTa': '🔬', 'Wav2Vec2.0': '🎙️', 'LangChain': '⛓️', 'RAG': '📡',
-    'PySpark': '⚡', 'Multimodal AI': '🎯', 'Prompt Engineering': '✍️',
-    'Classical ML': '📊', 'LLM Data Pipelines': '🔀', 'Sentiment Analysis': '💬',
-    'Deep Learning (CNN)': '🖼️',
+    'PySpark': '⚡', 'Multimodal AI': '🎯', 'spaCy': '💠', 'NER': '🏷️',
+    'Prompt Engineering': '✍️', 'Classical ML': '📊', 'LLM Data Pipelines': '🔀',
+    'Sentiment Analysis': '💬', 'Deep Learning (CNN)': '🖼️',
     'FastAPI': '🚀', 'Docker': '🐳', 'AWS EC2': '☁️', 'CI/CD': '♾️',
+    'NVIDIA Triton': '🟩', 'ONNX Runtime': '⚙️',
     'Git': '🗂️', 'REST APIs': '🔌', 'WebSockets': '🔄', 'Socket.IO': '🔵',
+    'ChromaDB': '🔮', 'OpenSearch': '🔎', 'MongoDB': '🍃', 'Redis': '🟥', 'SQL': '🗄️',
     'Python': '🐍', 'TypeScript': '💙', 'JavaScript': '🌐', 'React': '⚛️',
     'Next.js': '▲', 'Node.js': '🟢', 'Django': '🎸', 'Flask': '🧪',
-    'PHP': '🐘', 'Laravel': '🔴', 'SQL': '🗄️', 'MongoDB': '🍃', 'Redis': '🟥',
+    'PHP': '🐘', 'Laravel': '🔴',
     'ML Research': '🔭', 'Published Author': '📝', 'Technical Leadership': '🎯',
     'Production ML Deployment': '🏭', 'Code Reviews': '🔍', 'Performance Optimisation': '🏎️',
+    'EU AI Act': '🏛️', 'GDPR / DSGVO': '🔒', 'Privacy-Preserving Architectures': '🛡️',
 };
 
 const CATEGORIES = [
     {
         key: 'ai_ml',
-        label: 'AI & Machine Learning',
+        label: 'ML & AI',
         accent: '#FF2D78',
         direction: 1,
     },
     {
         key: 'mlops',
-        label: 'MLOps & Deployment',
+        label: 'MLOps & Deploy',
         accent: '#C084FC',
         direction: -1,
     },
     {
-        key: 'web_dev',
-        label: 'Web & Backend',
+        key: 'data_infra',
+        label: 'Data & Infra',
         accent: '#FF6BA8',
         direction: 1,
     },
     {
-        key: 'professional',
-        label: 'Professional',
+        key: 'tech_stack',
+        label: 'Tech Stack',
         accent: '#34d399',
         direction: -1,
+    },
+    {
+        key: 'professional',
+        label: 'Professional',
+        accent: '#FBBF24',
+        direction: 1,
     },
 ];
 

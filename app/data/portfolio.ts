@@ -30,7 +30,7 @@ export const PORTFOLIO_DATA = {
         ai_ml: ["PyTorch", "TensorFlow", "Hugging Face", "BERT", "RoBERTa", "Wav2Vec2.0", "LangChain", "RAG", "PySpark", "Multimodal AI", "spaCy", "NER", "Prompt Engineering", "Classical ML", "LLM Data Pipelines", "Sentiment Analysis", "Deep Learning (CNN)"],
         mlops: ["FastAPI", "Docker", "AWS EC2", "CI/CD", "NVIDIA Triton", "ONNX Runtime", "Git", "REST APIs", "WebSockets", "Socket.IO"],
         data_infra: ["ChromaDB", "OpenSearch", "PySpark", "MongoDB", "Redis", "SQL"],
-        tech_stack: ["Python", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "Django", "Flask", "PHP", "Laravel", "SQL", "MongoDB", "Redis"],
+        tech_stack: ["Python", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "Django", "Flask", "PHP", "Laravel"],
         professional: ["ML Research", "Published Author", "Technical Leadership", "Production ML Deployment", "Code Reviews", "Performance Optimisation", "EU AI Act", "GDPR / DSGVO", "Privacy-Preserving Architectures"]
     },
     featuredProject: {
