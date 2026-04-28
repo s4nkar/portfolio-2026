@@ -45,7 +45,7 @@ export const PORTFOLIO_DATA = {
             "Built 200+ automated tests covering unit logic, golden dataset validation, RAG retrieval quality, hallucination detection, and adversarial regulatory cases."
         ],
         results: "Macro F1 ≥ 0.95 · NER F1 ≥ 0.95 · RAG Precision@3 ≥ 85%",
-        link: "https://github.com/s4nkar/KlarKI"
+        link: "https://github.com/s4nkar/KlarKI-EU-AI-Act-compliance-auditor"
     },
     experience: [
         {

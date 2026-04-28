@@ -4,22 +4,53 @@ import { motion } from 'framer-motion';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import Section from './Section';
 
-const SKILL_ICONS: Record<string, string> = {
-    'PyTorch': '🔥', 'TensorFlow': '🧠', 'Hugging Face': '🤗', 'BERT': '📖',
-    'RoBERTa': '🔬', 'Wav2Vec2.0': '🎙️', 'LangChain': '⛓️', 'RAG': '📡',
-    'PySpark': '⚡', 'Multimodal AI': '🎯', 'spaCy': '💠', 'NER': '🏷️',
-    'Prompt Engineering': '✍️', 'Classical ML': '📊', 'LLM Data Pipelines': '🔀',
-    'Sentiment Analysis': '💬', 'Deep Learning (CNN)': '🖼️',
-    'FastAPI': '🚀', 'Docker': '🐳', 'AWS EC2': '☁️', 'CI/CD': '♾️',
-    'NVIDIA Triton': '🟩', 'ONNX Runtime': '⚙️',
-    'Git': '🗂️', 'REST APIs': '🔌', 'WebSockets': '🔄', 'Socket.IO': '🔵',
-    'ChromaDB': '🔮', 'OpenSearch': '🔎', 'MongoDB': '🍃', 'Redis': '🟥', 'SQL': '🗄️',
-    'Python': '🐍', 'TypeScript': '💙', 'JavaScript': '🌐', 'React': '⚛️',
-    'Next.js': '▲', 'Node.js': '🟢', 'Django': '🎸', 'Flask': '🧪',
-    'PHP': '🐘', 'Laravel': '🔴',
-    'ML Research': '🔭', 'Published Author': '📝', 'Technical Leadership': '🎯',
-    'Production ML Deployment': '🏭', 'Code Reviews': '🔍', 'Performance Optimisation': '🏎️',
-    'EU AI Act': '🏛️', 'GDPR / DSGVO': '🔒', 'Privacy-Preserving Architectures': '🛡️',
+// Official brand icons from react-icons (Simple Icons + others)
+import {
+    SiPytorch, SiTensorflow, SiPython, SiTypescript, SiJavascript,
+    SiReact, SiNextdotjs, SiNodedotjs, SiDjango, SiFlask,
+    SiDocker, SiGit, SiMongodb, SiRedis, SiApachespark,
+    SiPhp, SiLaravel, SiNvidia, SiOnnx, SiFastapi,
+    SiOpensearch, SiSocketdotio,
+} from 'react-icons/si';
+import {
+    TbBrandOpenai, TbDatabase, TbApi, TbWebhook,
+    TbBrain, TbMicrophone, TbTags, TbPencil,
+    TbChartBar, TbArrowsShuffle, TbMessageDots,
+    TbPhoto, TbCloud, TbInfinity, TbSearch,
+    TbFlask, TbTelescope, TbWriting, TbUsers,
+    TbRocket, TbCode, TbGauge,
+    TbBuildingBank, TbShieldLock, TbShield,
+    TbCircuitDiode,
+} from 'react-icons/tb';
+import { IconType } from 'react-icons';
+
+const SKILL_ICONS: Record<string, IconType> = {
+    // ML & AI
+    'PyTorch': SiPytorch, 'TensorFlow': SiTensorflow, 'Hugging Face': TbBrandOpenai,
+    'BERT': TbBrain, 'RoBERTa': TbBrain, 'Wav2Vec2.0': TbMicrophone,
+    'LangChain': TbCircuitDiode, 'RAG': TbSearch, 'PySpark': SiApachespark,
+    'Multimodal AI': TbBrain, 'spaCy': TbFlask, 'NER': TbTags,
+    'Prompt Engineering': TbPencil, 'Classical ML': TbChartBar,
+    'LLM Data Pipelines': TbArrowsShuffle, 'Sentiment Analysis': TbMessageDots,
+    'Deep Learning (CNN)': TbPhoto,
+    // MLOps & Deploy
+    'FastAPI': SiFastapi, 'Docker': SiDocker, 'AWS EC2': TbCloud,
+    'CI/CD': TbInfinity, 'NVIDIA Triton': SiNvidia, 'ONNX Runtime': SiOnnx,
+    'Git': SiGit, 'REST APIs': TbApi, 'WebSockets': TbWebhook,
+    'Socket.IO': SiSocketdotio,
+    // Data & Infra
+    'ChromaDB': TbDatabase, 'OpenSearch': SiOpensearch,
+    'MongoDB': SiMongodb, 'Redis': SiRedis, 'SQL': TbDatabase,
+    // Tech Stack
+    'Python': SiPython, 'TypeScript': SiTypescript, 'JavaScript': SiJavascript,
+    'React': SiReact, 'Next.js': SiNextdotjs, 'Node.js': SiNodedotjs,
+    'Django': SiDjango, 'Flask': SiFlask, 'PHP': SiPhp, 'Laravel': SiLaravel,
+    // Professional
+    'ML Research': TbTelescope, 'Published Author': TbWriting,
+    'Technical Leadership': TbUsers, 'Production ML Deployment': TbRocket,
+    'Code Reviews': TbCode, 'Performance Optimisation': TbGauge,
+    'EU AI Act': TbBuildingBank, 'GDPR / DSGVO': TbShieldLock,
+    'Privacy-Preserving Architectures': TbShield,
 };
 
 const CATEGORIES = [
@@ -66,11 +97,14 @@ const MarqueeStrip = ({
     direction: 1 | -1;
     speed?: number;
 }) => {
-    // Doubled items for seamless CSS loop (was tripled = 180 nodes, now 120)
-    const doubled = [...items, ...items];
-    const duration = `${speed}s`;
+    // Repeat the list enough times so one "set" always exceeds the viewport.
+    // For short lists (6 items) we need 4-5× copies; for long lists 2× is fine.
+    const minCopies = Math.max(2, Math.ceil(24 / items.length));
+    const repeated = Array.from({ length: minCopies * 2 }, () => items).flat();
     const animName = direction === 1 ? 'marqueeLeft' : 'marqueeRight';
-    const totalItems = items.length;
+    // Use half the repeated set as one cycle (= minCopies copies)
+    const cycleItems = items.length * minCopies;
+    const duration = `${speed}s`;
 
     return (
         <div
@@ -82,11 +116,10 @@ const MarqueeStrip = ({
                 className="flex gap-3 w-max"
                 style={{
                     animation: `${animName} ${duration} linear infinite`,
-                    // Each item ~200px wide; totalItems items per cycle
-                    ['--marquee-width' as string]: `${totalItems * 200}px`,
+                    ['--marquee-width' as string]: `${cycleItems * 180}px`,
                 }}
             >
-                {doubled.map((skill, i) => (
+                {repeated.map((skill, i) => (
                     <div
                         key={`${skill}-${i}`}
                         className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap cursor-default select-none skill-badge"
@@ -111,7 +144,11 @@ const MarqueeStrip = ({
                             el.style.background = `rgba(10,10,12,0.7)`;
                         }}
                     >
-                        <span className="text-base leading-none">{SKILL_ICONS[skill] ?? '•'}</span>
+                        <span className="text-base leading-none flex items-center justify-center w-4 h-4">
+                            {SKILL_ICONS[skill]
+                                ? React.createElement(SKILL_ICONS[skill], { size: 16 })
+                                : '•'}
+                        </span>
                         <span>{skill}</span>
                     </div>
                 ))}
@@ -179,7 +216,7 @@ const Skills = () => {
                                 items={items}
                                 accent={cat.accent}
                                 direction={cat.direction as 1 | -1}
-                                speed={items.length * 3.2}
+                                speed={Math.max(2, Math.ceil(24 / items.length)) * items.length * 3}
                             />
                         </motion.div>
                     );
