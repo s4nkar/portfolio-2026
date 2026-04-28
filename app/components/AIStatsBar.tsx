@@ -29,10 +29,10 @@ const STATS: Stat[] = [
         color: '#C084FC',
     },
     {
-        value: 30,
+        value: 20,
         suffix: '%',
         label: 'Latency Reduced',
-        sublabel: 'ML training optimisation',
+        sublabel: 'ML training batching optimisation',
         color: '#FF6BA8',
     },
     {

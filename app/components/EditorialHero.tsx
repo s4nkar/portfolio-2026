@@ -5,9 +5,9 @@ import { PORTFOLIO_DATA } from '../data/portfolio';
 import { ArrowRight, Github, Linkedin, Mail, FileText, MapPin } from 'lucide-react';
 
 const ROLES = [
-    "AI/ML Engineer",
+    "Applied AI Engineer",
     "NLP Researcher",
-    "LLM Architect",
+    "RAG Systems Builder",
     "Multimodal AI Builder",
     "Published Author",
 ];
@@ -85,7 +85,7 @@ const EditorialHero = () => {
                         <span className="flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-mono tracking-widest uppercase"
                             style={{ borderColor: 'rgba(255,45,120,0.3)', background: 'rgba(255,45,120,0.06)', color: '#FF2D78' }}>
                             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                            Available · Industrial PhD & AI Roles · Germany
+                            Available · AI Roles · Germany
                         </span>
                     </motion.div>
 
@@ -273,7 +273,7 @@ const EditorialHero = () => {
                             <div className="flex flex-col gap-5 my-6">
                                 <MetricBar label="Emotion Recognition F1" value={95} color="#FF2D78" />
                                 <MetricBar label="Vocal Anomaly Accuracy" value={78} color="#C084FC" />
-                                <MetricBar label="Training Latency Saved" value={30} color="#FF6BA8" />
+                                <MetricBar label="Training Latency Saved" value={20} color="#FF6BA8" />
 
                                 {/* Terminal snippet */}
                                 <div
